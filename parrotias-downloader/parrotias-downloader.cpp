@@ -39,6 +39,8 @@ bool Downloader::OnInit()
 MyFrame::MyFrame()
     : wxFrame(nullptr, wxID_ANY, "Parrotias setup", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
 {
+    SetBackgroundColour(wxColour(240, 240, 240));
+    
     SetSizer(CreateMainSizer());
 
     Fit();
@@ -90,7 +92,13 @@ wxBoxSizer* MyFrame::CreateMainSizer()
 
     // Create title message
     wxStaticText* titleMessage = new wxStaticText(this, wxID_ANY, "Parrotias");
-    rightSizer->Add(titleMessage, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 10);
+    wxFont font(wxFontInfo(14).Bold());
+    titleMessage->SetFont(font);
+    rightSizer->Add(titleMessage, 0, wxALL | wxALIGN_LEFT, 10);
+
+    // Under message
+    wxStaticText* customMessage = new wxStaticText(this, wxID_ANY, "Can't wait you will use it!", wxDefaultPosition, wxSize(400, 100), wxGA_HORIZONTAL);
+    rightSizer->Add(customMessage, 0, wxALL | wxALIGN_LEFT, 10);
 
     // Create the progress bar
     wxGauge* progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxSize(400, 10), wxGA_HORIZONTAL);
@@ -98,7 +106,7 @@ wxBoxSizer* MyFrame::CreateMainSizer()
 
     // Create downloading message
     wxStaticText* downloadMessage = new wxStaticText(this, wxID_ANY, "Installing Parrotias...");
-    rightSizer->Add(downloadMessage, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 10);
+    rightSizer->Add(downloadMessage, 0, wxALL | wxALIGN_LEFT, 10);
 
     // Place Subsizer to MainSizer
     mainSizer->Add(rightSizer, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
