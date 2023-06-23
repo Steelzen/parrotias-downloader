@@ -37,13 +37,15 @@ bool Downloader::OnInit()
 }
 
 MyFrame::MyFrame()
-    : wxFrame(nullptr, wxID_ANY, "Parrotias setup")
+    : wxFrame(nullptr, wxID_ANY, "Parrotias setup", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
 {
     SetSizer(CreateMainSizer());
 
     Fit();
 
     Centre();
+
+    SetWindowStyle(wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX));
 }
 
 void MyFrame::OnExit(wxCommandEvent& event)
@@ -91,7 +93,7 @@ wxBoxSizer* MyFrame::CreateMainSizer()
     rightSizer->Add(titleMessage, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 10);
 
     // Create the progress bar
-    wxGauge* progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxDefaultSize, wxGA_HORIZONTAL);
+    wxGauge* progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxSize(400, 10), wxGA_HORIZONTAL);
     rightSizer->Add(progressBar, 0, wxALL | wxEXPAND, 10);
 
     // Create downloading message
