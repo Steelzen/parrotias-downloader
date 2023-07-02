@@ -2,8 +2,6 @@
 #include <wx/filename.h>
 #include <curl/curl.h>
 #include <zip.h>
-#include <cstdio>
-#include <cstdlib>
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
 #include "logo_data.h"
@@ -78,7 +76,6 @@ size_t WriteData(void* ptr, size_t size, size_t nmemb, FILE* stream)
     return fwrite(ptr, size, nmemb, stream);
 }
 
-
 // Function to download a file from an HTTP source
 bool DownloadFile(const wxString& url, const wxString& destination)
 {
@@ -116,6 +113,7 @@ bool DownloadFile(const wxString& url, const wxString& destination)
     wxMessageBox("Failed to initialize libcurl", "Error", wxOK | wxICON_ERROR);
     return false;
 }
+
 
 // Function to unzip a file
 bool UnzipFile(const wxString& zipFile, const wxString& destination)

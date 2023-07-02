@@ -1,2 +1,15 @@
 ﻿  parrotias-downloader.cpp
-  parrotias-downloader.vcxproj -> C:\Users\katal\source\repos\parrotias-downloader\x64\Debug\parrotias-downloader.exe
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "void (__cdecl* wxTheAssertHandler)(class wxString const &,int,class wxString const &,class wxString const &,class wxString const &)" (?wxTheAssertHandler@@3P6AXAEBVwxString@@H000@ZEA)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "bool wxTrapInAssert" (?wxTrapInAssert@@3_NA)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxMBConv * wxConvLibcPtr" (?wxConvLibcPtr@@3PEAVwxMBConv@@EA)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "public: static unsigned __int64 const wxString::npos" (?npos@wxString@@2_KB)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxSize const wxDefaultSize" (?wxDefaultSize@@3VwxSize@@B)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxPoint const wxDefaultPosition" (?wxDefaultPosition@@3VwxPoint@@B)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "protected: static class wxAppConsole * (__cdecl* wxAppConsoleBase::ms_appInitFn)(void)" (?ms_appInitFn@wxAppConsoleBase@@1P6APEAVwxAppConsole@@XZEA)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "protected: static class wxAppConsole * wxAppConsoleBase::ms_appInstance" (?ms_appInstance@wxAppConsoleBase@@1PEAVwxAppConsole@@EA)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxValidator const wxDefaultValidator" (?wxDefaultValidator@@3VwxValidator@@B)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxFrameNameStr" (?wxFrameNameStr@@3QBDB)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxStaticTextNameStr" (?wxStaticTextNameStr@@3QBDB)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxStaticBitmapNameStr" (?wxStaticBitmapNameStr@@3QBDB)
+parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxGaugeNameStr" (?wxGaugeNameStr@@3QBDB)
+C:\Users\katal\source\repos\parrotias-downloader\x64\Debug\parrotias-downloader.exe : fatal error LNK1120: 13 unresolved externals
