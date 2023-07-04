@@ -1,5 +1,7 @@
 #include <wx/wx.h>
 #include <wx/filename.h>
+#include <windows.h>
+#include <shlobj.h>
 #include <curl/curl.h>
 #include <zip.h>
 #include <wx/stdpaths.h>
@@ -35,6 +37,15 @@ enum
 
 bool Downloader::OnInit()
 {
+    //// check libcurl info 
+    //curl_version_info_data* vinfo = curl_version_info(CURLVERSION_NOW);
+    //if (vinfo->features & CURL_VERSION_SSL) {
+    //    wxLogMessage("SSL support is enabled.");
+    //}
+    //else {
+    //    wxLogMessage("SSL support is NOT enabled.");
+    //}
+
     MyFrame* frame = new MyFrame();
     frame->Show(true);
     return true;
@@ -77,18 +88,28 @@ size_t WriteData(void* ptr, size_t size, size_t nmemb, FILE* stream)
 }
 
 // Function to download a file from an HTTP source
-bool DownloadFile(const wxString& url, const wxString& destination)
+bool DownloadFile(const char* url, const char* destination)
 {
-    curl_global_init(CURL_GLOBAL_DEFAULT);
+    CURLcode global_init_res = curl_global_init(CURL_GLOBAL_ALL);
+    if (global_init_res != CURLE_OK) {
+        wxMessageBox(wxString::Format("curl_global_inint() failed: %s", curl_easy_strerror(global_init_res)), "Error", wxOK | wxICON_ERROR);
+        return false;
+    }
+
     CURL* curl = curl_easy_init();
     if (curl)
     {
-        FILE* file = fopen(destination.c_str(), "wb");
+        FILE* file = fopen(destination, "wb");
         if (file)
         {
-            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+            curl_easy_setopt(curl, CURLOPT_URL, url);
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteData);
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
+            curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // for github source need to design a location like this
+            //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+            //curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+            //curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+            //curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
             CURLcode result = curl_easy_perform(curl);
 
@@ -97,102 +118,49 @@ bool DownloadFile(const wxString& url, const wxString& destination)
             if (result != CURLE_OK)
             {
                 wxMessageBox(wxString::Format("Failed to download file: %s", curl_easy_strerror(result)), "Error", wxOK | wxICON_ERROR);
+                curl_global_cleanup();
                 return false;
             }
         }
         else
         {
             wxMessageBox(wxString::Format("Failed to create file: %s", destination), "Error", wxOK | wxICON_ERROR);
+            curl_global_cleanup();
             return false;
         }
 
         curl_easy_cleanup(curl);
+        curl_global_cleanup();
         return true;
     }
 
     wxMessageBox("Failed to initialize libcurl", "Error", wxOK | wxICON_ERROR);
+    curl_global_cleanup();
     return false;
 }
 
-
-// Function to unzip a file
-bool UnzipFile(const wxString& zipFile, const wxString& destination)
-{
-    int err = 0;
-    zip* archive = zip_open(zipFile.mb_str(), 0, &err);
-    if (archive)
-    {
-        int numFiles = zip_get_num_entries(archive, 0);
-        for (int i = 0; i < numFiles; ++i)
-        {
-            zip_stat_t fileStat;
-            zip_stat_index(archive, i, 0, &fileStat);
-
-            zip_file_t* file = zip_fopen_index(archive, i, 0);
-            if (file)
-            {
-                wxString filePath = wxString::Format("%s/%s", destination, fileStat.name);
-                FILE* outFile = fopen(filePath.mb_str(), "wb");
-                if (outFile)
-                {
-                    char* buffer = new char[fileStat.size];
-                    zip_fread(file, buffer, fileStat.size);
-                    fwrite(buffer, fileStat.size, 1, outFile);
-                    delete[] buffer;
-
-                    fclose(outFile);
-                }
-
-                zip_fclose(file);
-            }
-        }
-
-        zip_close(archive);
-        return true;
+// Find Users folder in computer and download the file
+void DownloadToUserFolder(const char* url, const char* filename) {
+    char path[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, path))) {
+        std::string destination = std::string(path) + "\\" + std::string(filename);
+        DownloadFile(url, destination.c_str());
     }
-
-    wxMessageBox(wxString::Format("Failed to open zip file: %s", zipFile), "Error", wxOK | wxICON_ERROR);
-    return false;
+    else {
+        // Replace printf with appropriate method for showing an error message
+        wxMessageBox("Failed to get user directory", "Error", wxOK | wxICON_ERROR);
+    }
 }
 
 // Download and unzip usage
 void DownloadAndUnzipFile()
 {
-    wxString url = "https://github.com/Steelzen/parrotias-windows/archive/refs/tags/v0.5.0.zip";
+    DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias-windows-release.zip");
 
-    wxFileName documentsDir(wxStandardPaths::Get().GetDocumentsDir());
-    wxString destination = documentsDir.GetPath() + wxFileName::GetPathSeparator() + "Parrotias";
-    wxString zipFile = destination + wxFileName::GetPathSeparator() + "parrotias-windows-0.5.0.zip";
+    //TODO: Unzip downloaded file
 
-    // Create the destination directory if it doesn't exist
-    if (!wxDirExists(destination))
-    {
-        if (!wxMkdir(destination))
-        {
-            wxMessageBox("Failed to create destination directory", "Error", wxOK | wxICON_ERROR);
-            return;
-        }
-    }
-
-    // Download the file
-    if (DownloadFile(url, zipFile))
-    {
-        // Unzip the downloaded file
-        if (UnzipFile(zipFile, destination))
-        {
-            // Delete the zip file
-            if (std::remove(zipFile.mb_str()) == 0)
-            {
-                wxMessageBox("File downloaded, unzipped, and zip file deleted successfully!", "Success", wxOK | wxICON_INFORMATION);
-            }
-            else
-            {
-                wxMessageBox("Failed to delete zip file", "Error", wxOK | wxICON_ERROR);
-            }
-        }
-    }
+    //TODO: Delete downloaded file
 }
-
 
 wxBoxSizer* MyFrame::CreateMainSizer()
 {
@@ -201,7 +169,6 @@ wxBoxSizer* MyFrame::CreateMainSizer()
 
     // Create sub sizer to contain messages and progress bar
     wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
-
 
     // Load the image data using stb_image
     int width, height, channels;
@@ -246,7 +213,8 @@ wxBoxSizer* MyFrame::CreateMainSizer()
     // Set the main sizer as the sizer for the frame
     SetSizer(mainSizer);
 
-    //DownloadAndUnzipFile();
+    DownloadAndUnzipFile();
 
-    return mainSizer;
+
+    return mainSizer; 
 }

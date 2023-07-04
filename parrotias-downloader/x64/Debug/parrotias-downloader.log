@@ -1,15 +1,341 @@
-﻿  parrotias-downloader.cpp
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "void (__cdecl* wxTheAssertHandler)(class wxString const &,int,class wxString const &,class wxString const &,class wxString const &)" (?wxTheAssertHandler@@3P6AXAEBVwxString@@H000@ZEA)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "bool wxTrapInAssert" (?wxTrapInAssert@@3_NA)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxMBConv * wxConvLibcPtr" (?wxConvLibcPtr@@3PEAVwxMBConv@@EA)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "public: static unsigned __int64 const wxString::npos" (?npos@wxString@@2_KB)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxSize const wxDefaultSize" (?wxDefaultSize@@3VwxSize@@B)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxPoint const wxDefaultPosition" (?wxDefaultPosition@@3VwxPoint@@B)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "protected: static class wxAppConsole * (__cdecl* wxAppConsoleBase::ms_appInitFn)(void)" (?ms_appInitFn@wxAppConsoleBase@@1P6APEAVwxAppConsole@@XZEA)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "protected: static class wxAppConsole * wxAppConsoleBase::ms_appInstance" (?ms_appInstance@wxAppConsoleBase@@1PEAVwxAppConsole@@EA)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "class wxValidator const wxDefaultValidator" (?wxDefaultValidator@@3VwxValidator@@B)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxFrameNameStr" (?wxFrameNameStr@@3QBDB)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxStaticTextNameStr" (?wxStaticTextNameStr@@3QBDB)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxStaticBitmapNameStr" (?wxStaticBitmapNameStr@@3QBDB)
-parrotias-downloader.obj : error LNK2001: unresolved external symbol "char const * const wxGaugeNameStr" (?wxGaugeNameStr@@3QBDB)
-C:\Users\katal\source\repos\parrotias-downloader\x64\Debug\parrotias-downloader.exe : fatal error LNK1120: 13 unresolved externals
+﻿wxbase32ud.lib(appbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(string.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(strconv.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(strvararg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(object.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(list.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(arrstr.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(clntdata.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(filefn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(event.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(filename.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stdpbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stringops.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(wxcrt.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(hashmap.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(msgout.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(time.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(thread.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(log.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(utils.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(config.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(basemsw.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(cmdline.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(evtloopcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(sysopt.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(tokenzr.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(fmapbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stackwalk.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stringimpl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(cmake_pch.cxx.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(unichar.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(uilocale.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(xlocale.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(intl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(encconv.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(hash.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(translation.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(file.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(dir.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(datetime.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(any.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(longlong.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(utilscmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(ffile.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(uri.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stdpaths.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(module.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(threadinfo.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(main.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(dynlib.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(dlmsw.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(datetimefmt.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(utilsexc.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(regconf.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(evtloopconsole.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(timerimpl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(timer.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(convauto.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(fileconf.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(debughlp.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(uilocale.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(languageinfo.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(registry.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(variant.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(txtstrm.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(process.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(crashrpt.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(init.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(platinfo.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stream.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(dde.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(timercmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(textbuf.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(textfile.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(base64.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(wfstream.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(ipcbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(gdicmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(gdiimage.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(main.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(appcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(icon.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(app.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(font.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(colourcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(colour.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(wincmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(window.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(nativdlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(nonownedwnd.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(toplvcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(toplevel.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(ctrlcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(control.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(framecmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(frame.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(image.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bitmap.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bmpbndl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(utilscmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(stattextcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(stattext.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statbmpcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statbmp.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(gaugecmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(gauge.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(sizer.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(validate.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(cursor.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(palette.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(settings.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(iconbndl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(brush.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(pen.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dpycmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(cmake_pch.cxx.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bmpbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dib.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(logg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(event.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(containr.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dlgcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dialog.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(stockitem.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(msgdlgg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(richmsgdlgg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(richmsgdlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontmap.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(utilsgui.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(evtloop.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dc.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontutil.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(rgncmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(region.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(windowid.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(accel.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(tooltip.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dcbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(layout.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statbar.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(btncmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(toolbar.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(cshelp.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(menucmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(menu.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(radiobox.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(droptgt.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dcclient.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textmeasurecmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textmeasure.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(spinctrl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(uxtheme.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statboxcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(popupwin.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(anybutton.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(button.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(ctrlsub.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bmpbtncmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(checkbox.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(checkboxcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(lboxcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(listbox.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(choiccmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(choice.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(scrolbar.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(scrolbarcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statbox.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(radiobut.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(radiobtncmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textentrycmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textentry.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textctrl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(slider.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(slidercmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(combobox.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(combocmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(spinbutt.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(spinbtncmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(gdiplus.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(graphcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(markupparser.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(rendcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statusbar.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(tbarbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statusbr.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(taskbarbutton.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(imagbmp.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(xpmdecod.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(msgdlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textdlgg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(utilswin.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(nbkbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(appprogress.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(settcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontenumcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(display.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(quantize.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(menuitem.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dataobj.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dobjcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fldlgcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(clipcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(artprov.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(collpaneg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(systhemectrl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(listctrlcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(listctrl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(textcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(panelcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(scrlwing.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statline.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(statlinecmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bookctrl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(modalhook.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(accelcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(choicdgg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontdata.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontdlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(affinematrix2d.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(cmndata.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(prntbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dcmemory.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dcscreen.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bmpbuttn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(tipwin.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(helpchm.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(radiocmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dndcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(comimpl.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(spinctrlcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(popupcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(markuptext.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(ownerdrwcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(ownerdrw.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(combo.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(geometry.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(graphics.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(enhmeta.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(renderer.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(imagpng.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(anidecod.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(valtext.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(notebook.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(fontenum.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(filedlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(clipbrd.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(artmsw.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(artstd.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(arttango.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(collheaderctrlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(customdraw.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(checklst.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(checklstcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(paper.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(printwin.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(printdlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dcprint.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(helpbase.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(uuid.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dcbufcmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(renderg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(dirdlg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(volume.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxmsw32ud_core.lib(bmpsvg.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: bool __cdecl std::ios_base::good(void)const " (?good@ios_base@std@@QEBA_NXZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: int __cdecl std::ios_base::flags(void)const " (?flags@ios_base@std@@QEBAHXZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: __int64 __cdecl std::ios_base::width(void)const " (?width@ios_base@std@@QEBA_JXZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: __int64 __cdecl std::ios_base::width(__int64)" (?width@ios_base@std@@QEAA_J_J@Z) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: int __cdecl std::basic_streambuf<char,struct std::char_traits<char> >::sputc(char)" (?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: __int64 __cdecl std::basic_streambuf<char,struct std::char_traits<char> >::sputn(char const *,__int64)" (?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: void __cdecl std::basic_ios<char,struct std::char_traits<char> >::setstate(int,bool)" (?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: class std::basic_ostream<char,struct std::char_traits<char> > * __cdecl std::basic_ios<char,struct std::char_traits<char> >::tie(void)const " (?tie@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_ostream@DU?$char_traits@D@std@@@2@XZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: class std::basic_streambuf<char,struct std::char_traits<char> > * __cdecl std::basic_ios<char,struct std::char_traits<char> >::rdbuf(void)const " (?rdbuf@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBAPEAV?$basic_streambuf@DU?$char_traits@D@std@@@2@XZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: char __cdecl std::basic_ios<char,struct std::char_traits<char> >::fill(void)const " (?fill@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADXZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: void __cdecl std::basic_ostream<char,struct std::char_traits<char> >::_Osfx(void)" (?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ) already defined in wxbase32ud.lib(string.cpp.obj)
+msvcprtd.lib(MSVCP140D.dll) : error LNK2005: "public: class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl std::basic_ostream<char,struct std::char_traits<char> >::flush(void)" (?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ) already defined in wxbase32ud.lib(string.cpp.obj)
+libcpmtd.lib(cerr.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(locale0.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(locale0.obj) : error LNK2005: "void __cdecl std::_Facet_Register(class std::_Facet_base *)" (?_Facet_Register@std@@YAXPEAV_Facet_base@1@@Z) already defined in msvcprtd.lib(locale0_implib.obj)
+libcpmtd.lib(locale0.obj) : error LNK2005: "private: static class std::locale::_Locimp * __cdecl std::locale::_Getgloballocale(void)" (?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ) already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(locale0.obj) : error LNK2005: "private: static class std::locale::_Locimp * __cdecl std::locale::_Init(bool)" (?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z) already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(locale0.obj) : error LNK2005: "public: static void __cdecl std::_Locinfo::_Locinfo_ctor(class std::_Locinfo *,char const *)" (?_Locinfo_ctor@_Locinfo@std@@SAXPEAV12@PEBD@Z) already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(locale0.obj) : error LNK2005: "public: static void __cdecl std::_Locinfo::_Locinfo_dtor(class std::_Locinfo *)" (?_Locinfo_dtor@_Locinfo@std@@SAXPEAV12@@Z) already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(xlock.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xlock.obj) : error LNK2005: "public: __cdecl std::_Lockit::_Lockit(int)" (??0_Lockit@std@@QEAA@H@Z) already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(xlock.obj) : error LNK2005: "public: __cdecl std::_Lockit::~_Lockit(void)" (??1_Lockit@std@@QEAA@XZ) already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(ios.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(iosptrs.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(locale.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xmtx.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(wlocale.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xlocale.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xstrcoll.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xdateord.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xmbtowc.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xwctomb.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xwctomb.obj) : error LNK2005: _Getcvt already defined in msvcprtd.lib(MSVCP140D.dll)
+libcpmtd.lib(xwcscoll.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xgetwctype.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xtowlower.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xtowupper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(xstrxfrm.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(StlCompareStringW.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(StlLCMapStringW.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(powercmn.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(mstream.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(stopwatch.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(datstrm.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+wxbase32ud.lib(volume.cpp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MTd_StaticDebug' doesn't match value 'MDd_DynamicDebug' in parrotias-downloader.obj
+LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+wxmsw32ud_core.lib(app.cpp.obj) : error LNK2019: unresolved external symbol __imp_InitCommonControls referenced in function "public: virtual bool __cdecl wxApp::Initialize(int &,wchar_t * *)" (?Initialize@wxApp@@UEAA_NAEAHPEAPEA_W@Z)
+wxmsw32ud_core.lib(spinbutt.cpp.obj) : error LNK2019: unresolved external symbol __imp_CreateUpDownControl referenced in function "public: bool __cdecl wxSpinButton::Create(class wxWindow *,int,class wxPoint const &,class wxSize const &,long,class wxString const &)" (?Create@wxSpinButton@@QEAA_NPEAVwxWindow@@HAEBVwxPoint@@AEBVwxSize@@JAEBVwxString@@@Z)
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_Create referenced in function "public: bool __cdecl wxImageList::Create(int,int,bool,int)" (?Create@wxImageList@@QEAA_NHH_NH@Z)
+wxmsw32ud_core.lib(ownerdrw.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_Create
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_Destroy referenced in function "public: void __cdecl wxImageList::Destroy(void)" (?Destroy@wxImageList@@QEAAXXZ)
+wxmsw32ud_core.lib(ownerdrw.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_Destroy
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_GetImageCount referenced in function "public: int __cdecl wxImageList::GetImageCount(void)const " (?GetImageCount@wxImageList@@QEBAHXZ)
+wxmsw32ud_core.lib(listctrl.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_GetImageCount
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_Add referenced in function "public: int __cdecl wxImageList::Add(class wxBitmap const &,class wxBitmap const &)" (?Add@wxImageList@@QEAAHAEBVwxBitmap@@0@Z)
+wxmsw32ud_core.lib(ownerdrw.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_Add
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_SetBkColor referenced in function "public: bool __cdecl wxImageList::Draw(int,class wxDC &,int,int,int,bool)" (?Draw@wxImageList@@QEAA_NHAEAVwxDC@@HHH_N@Z)
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_Draw referenced in function "public: bool __cdecl wxImageList::Draw(int,class wxDC &,int,int,int,bool)" (?Draw@wxImageList@@QEAA_NHAEAVwxDC@@HHH_N@Z)
+wxmsw32ud_core.lib(listctrl.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_Draw
+wxmsw32ud_core.lib(ownerdrw.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_Draw
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_Replace referenced in function "public: bool __cdecl wxImageList::Replace(int,class wxBitmap const &,class wxBitmap const &)" (?Replace@wxImageList@@QEAA_NHAEBVwxBitmap@@0@Z)
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_AddMasked referenced in function "public: int __cdecl wxImageList::Add(class wxBitmap const &,class wxColour const &)" (?Add@wxImageList@@QEAAHAEBVwxBitmap@@AEBVwxColour@@@Z)
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_Remove referenced in function "public: bool __cdecl wxImageList::Remove(int)" (?Remove@wxImageList@@QEAA_NH@Z)
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_GetIcon referenced in function "public: class wxIcon __cdecl wxImageList::GetIcon(int)const " (?GetIcon@wxImageList@@QEBA?AVwxIcon@@H@Z)
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_GetIconSize referenced in function "public: bool __cdecl wxImageList::GetSize(int,int &,int &)const " (?GetSize@wxImageList@@QEBA_NHAEAH0@Z)
+wxmsw32ud_core.lib(listctrl.cpp.obj) : error LNK2001: unresolved external symbol __imp_ImageList_GetIconSize
+wxmsw32ud_core.lib(imaglist.cpp.obj) : error LNK2019: unresolved external symbol __imp_ImageList_GetImageInfo referenced in function "public: class wxBitmap __cdecl wxImageList::GetBitmap(int)const " (?GetBitmap@wxImageList@@QEBA?AVwxBitmap@@H@Z)
+wxmsw32ud_core.lib(uuid.cpp.obj) : error LNK2019: unresolved external symbol __imp_RpcStringFreeW referenced in function "public: __cdecl Uuid::~Uuid(void)" (??1Uuid@@QEAA@XZ)
+wxmsw32ud_core.lib(uuid.cpp.obj) : error LNK2019: unresolved external symbol __imp_UuidCreate referenced in function "public: void __cdecl Uuid::Create(void)" (?Create@Uuid@@QEAAXXZ)
+wxmsw32ud_core.lib(uuid.cpp.obj) : error LNK2019: unresolved external symbol __imp_UuidToStringW referenced in function "public: __cdecl Uuid::Uuid(class Uuid const &)" (??0Uuid@@QEAA@AEBV0@@Z)
+wxmsw32ud_core.lib(uuid.cpp.obj) : error LNK2019: unresolved external symbol __imp_UuidFromStringW referenced in function "public: bool __cdecl Uuid::Set(wchar_t const *)" (?Set@Uuid@@QEAA_NPEB_W@Z)
+C:\Users\katal\source\repos\parrotias-downloader\x64\Debug\parrotias-downloader.exe : fatal error LNK1120: 18 unresolved externals
