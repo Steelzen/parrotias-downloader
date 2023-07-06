@@ -18,34 +18,38 @@ public:
 
 wxIMPLEMENT_APP(Downloader);
 
-class MyFrame : public wxFrame
+class MyFrame : public wxFrame, public wxThreadHelper
 {
 public:
-    MyFrame();
+    static MyFrame* GetInstance();  // Singleton accessor
+    ~MyFrame();
+
+    static const int ID_DOWNLOAD_PROGRESS = wxID_HIGHEST + 1; // 1. Add event declaration 
 
 private:
-    void OnExit(wxCommandEvent& event);
-    void OnAbout(wxCommandEvent& event);
-    void OnSetStatusInstallText(wxCommandEvent& event);
+    static MyFrame* instance;  // Singleton instance
 
-    wxBoxSizer* CreateMainSizer();
+    void DownloadAndUnzipFile();
+
+    wxGauge* progressBar;
+
+    void onThreadUpdate(wxThreadEvent& event);
+    wxThread::ExitCode Entry() override;
+    void OnDownloadProgress(wxThreadEvent& event); // 1. Add event handler declaration 
+
+    wxBoxSizer* CreateMainSizer(wxGauge* progressBar);
 };
 
-enum
+MyFrame* MyFrame::instance = nullptr;
+
+MyFrame* MyFrame::GetInstance()
 {
-};
+    return instance;
+}
+
 
 bool Downloader::OnInit()
 {
-    //// check libcurl info 
-    //curl_version_info_data* vinfo = curl_version_info(CURLVERSION_NOW);
-    //if (vinfo->features & CURL_VERSION_SSL) {
-    //    wxLogMessage("SSL support is enabled.");
-    //}
-    //else {
-    //    wxLogMessage("SSL support is NOT enabled.");
-    //}
-
     MyFrame* frame = new MyFrame();
     frame->Show(true);
     return true;
@@ -54,37 +58,133 @@ bool Downloader::OnInit()
 MyFrame::MyFrame()
     : wxFrame(nullptr, wxID_ANY, "Parrotias setup", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
 {
+    // Set up the gauge
+    progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxSize(400, 10), wxGA_HORIZONTAL);
+
+    // Bind the download progress event
+    Bind(wxEVT_THREAD, &MyFrame::OnDownloadProgress, this, ID_DOWNLOAD_PROGRESS);
+
+    // Set up the GUI...
     SetBackgroundColour(wxColour(240, 240, 240));
-    
-    SetSizer(CreateMainSizer());
-
+    SetSizer(CreateMainSizer(progressBar));
     Fit();
-
     Centre();
-
     SetWindowStyle(wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX));
+
+    // Create the thread
+    if (CreateThread(wxTHREAD_JOINABLE) != wxTHREAD_NO_ERROR)
+    {
+        wxLogError("Could not create thread!");
+        return;
+    }
+
+    // Run the thread
+    if (GetThread()->Run() != wxTHREAD_NO_ERROR)
+    {
+        wxLogError("Could not run thread!");
+        return;
+    }
 }
 
-void MyFrame::OnExit(wxCommandEvent& event)
+MyFrame::~MyFrame()
 {
-    Close(true);
+    if (GetThread() && GetThread()->IsRunning())
+        GetThread()->Wait();
 }
 
-void MyFrame::OnAbout(wxCommandEvent& event)
+
+wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
 {
-    wxMessageBox("This is a Parrotias Windows app downloader ",
-        "About Parrotias Downloader", wxOK | wxICON_INFORMATION);
+    // Create the main sizer that will contain the logo, and subsizer
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
+
+    // Create sub sizer to contain messages and progress bar
+    wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
+
+    // Load the image data using stb_image
+    int width, height, channels;
+    unsigned char* image_data = stbi_load_from_memory(logo_data, logo_data_size, &width, &height, &channels, 0);
+
+    if (image_data)
+    {
+        wxImage image(width, height, image_data, true);
+        wxBitmap logoBitmap(image);
+        wxStaticBitmap* logo = new wxStaticBitmap(this, wxID_ANY, logoBitmap);
+        mainSizer->Add(logo, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
+
+        stbi_image_free(image_data);
+    }
+    else
+    {
+        // Failed to load image data
+        wxMessageBox("Failed to load image", "Error", wxOK | wxICON_ERROR);
+    }
+    
+    // Create title message
+    wxStaticText* titleMessage = new wxStaticText(this, wxID_ANY, "Parrotias");
+    wxFont font(wxFontInfo(14).Bold());
+    titleMessage->SetFont(font);
+    rightSizer->Add(titleMessage, 0, wxALL | wxALIGN_LEFT, 10);
+
+    // Under message
+    wxStaticText* customMessage = new wxStaticText(this, wxID_ANY, "Can't wait you will use it!", wxDefaultPosition, wxSize(400, 100), wxGA_HORIZONTAL);
+    rightSizer->Add(customMessage, 0, wxALL | wxALIGN_LEFT, 10);
+
+    // Set the progress bar
+    rightSizer->Add(progressBar, 0, wxALL | wxEXPAND, 10);
+
+    // Create downloading message
+    wxStaticText* downloadMessage = new wxStaticText(this, wxID_ANY, "Installing Parrotias...");
+    rightSizer->Add(downloadMessage, 0, wxALL | wxALIGN_LEFT, 10);
+
+    // Place Subsizer to MainSizer
+    mainSizer->Add(rightSizer, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
+
+    // Set the main sizer as the sizer for the frame
+    SetSizer(mainSizer);
+
+    //DownloadAndUnzipFile();
+
+    return mainSizer; 
 }
 
-void MyFrame::OnSetStatusInstallText(wxCommandEvent& event)
+wxThread::ExitCode MyFrame::Entry()
 {
-    std::cout << "Install Status Changed";
+    // Do Download
+    DownloadAndUnzipFile();
+
+    return (wxThread::ExitCode)0;
+}
+
+// Event handler to update progress bar
+void MyFrame::OnDownloadProgress(wxThreadEvent& event) // 4. Implement event handler
+{
+    progressBar->SetValue(event.GetInt());
+}
+
+void MyFrame::onThreadUpdate(wxThreadEvent& event)
+{
+
 }
 
 // Function to write downloaded data to a file
 size_t WriteData(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
     return fwrite(ptr, size, nmemb, stream);
+}
+
+// Callback function to update prgoressbar
+int ProgressCallback(void* ptr, double TotalToDownload, double NowDownloaded, double TotalToUpload, double NowUploaded)
+{
+    MyFrame* frame = static_cast<MyFrame*>(ptr); // 2. Update ProgressCallback
+    int progress = static_cast<int>(NowDownloaded / TotalToDownload * 100);
+
+    wxThreadEvent* evt = new wxThreadEvent(wxEVT_THREAD, MyFrame::ID_DOWNLOAD_PROGRESS);
+    evt->SetInt(progress);
+
+    wxQueueEvent(frame, evt);
+
+    return 0;
 }
 
 // Function to download a file from an HTTP source
@@ -106,10 +206,11 @@ bool DownloadFile(const char* url, const char* destination)
             curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteData);
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
             curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L); // for github source need to design a location like this
-            //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-            //curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-            //curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-            //curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+
+            // Set up the progress function and data
+            curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+            curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, ProgressCallback);
+            curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, MyFrame::GetInstance()); // 5. Pass this instead of progressBar
 
             CURLcode result = curl_easy_perform(curl);
 
@@ -147,13 +248,12 @@ void DownloadToUserFolder(const char* url, const char* filename) {
         DownloadFile(url, destination.c_str());
     }
     else {
-        // Replace printf with appropriate method for showing an error message
         wxMessageBox("Failed to get user directory", "Error", wxOK | wxICON_ERROR);
     }
 }
 
 // Download and unzip usage
-void DownloadAndUnzipFile()
+void MyFrame::DownloadAndUnzipFile()
 {
     DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias-windows-release.zip");
 
@@ -162,59 +262,3 @@ void DownloadAndUnzipFile()
     //TODO: Delete downloaded file
 }
 
-wxBoxSizer* MyFrame::CreateMainSizer()
-{
-    // Create the main sizer that will contain the logo, and subsizer
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
-
-    // Create sub sizer to contain messages and progress bar
-    wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
-
-    // Load the image data using stb_image
-    int width, height, channels;
-    unsigned char* image_data = stbi_load_from_memory(logo_data, logo_data_size, &width, &height, &channels, 0);
-
-    if (image_data)
-    {
-        wxImage image(width, height, image_data, true);
-        wxBitmap logoBitmap(image);
-        wxStaticBitmap* logo = new wxStaticBitmap(this, wxID_ANY, logoBitmap);
-        mainSizer->Add(logo, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
-
-        stbi_image_free(image_data);
-    }
-    else
-    {
-        // Failed to load image data
-        wxMessageBox("Failed to load image", "Error", wxOK | wxICON_ERROR);
-    }
-    
-    // Create title message
-    wxStaticText* titleMessage = new wxStaticText(this, wxID_ANY, "Parrotias");
-    wxFont font(wxFontInfo(14).Bold());
-    titleMessage->SetFont(font);
-    rightSizer->Add(titleMessage, 0, wxALL | wxALIGN_LEFT, 10);
-
-    // Under message
-    wxStaticText* customMessage = new wxStaticText(this, wxID_ANY, "Can't wait you will use it!", wxDefaultPosition, wxSize(400, 100), wxGA_HORIZONTAL);
-    rightSizer->Add(customMessage, 0, wxALL | wxALIGN_LEFT, 10);
-
-    // Create the progress bar
-    wxGauge* progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxSize(400, 10), wxGA_HORIZONTAL);
-    rightSizer->Add(progressBar, 0, wxALL | wxEXPAND, 10);
-
-    // Create downloading message
-    wxStaticText* downloadMessage = new wxStaticText(this, wxID_ANY, "Installing Parrotias...");
-    rightSizer->Add(downloadMessage, 0, wxALL | wxALIGN_LEFT, 10);
-
-    // Place Subsizer to MainSizer
-    mainSizer->Add(rightSizer, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
-
-    // Set the main sizer as the sizer for the frame
-    SetSizer(mainSizer);
-
-    DownloadAndUnzipFile();
-
-
-    return mainSizer; 
-}
