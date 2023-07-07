@@ -1,2 +1,6 @@
 ﻿  parrotias-downloader.cpp
-C:\Users\katal\source\repos\parrotias-downloader\parrotias-downloader\parrotias-downloader.cpp(58,5): error C2600: 'MyFrame::MyFrame': cannot define a compiler-generated special member function (must be declared in the class first)
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 755 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  parrotias-downloader.vcxproj -> C:\Users\katal\source\repos\parrotias-downloader\x64\Release\parrotias-downloader.exe

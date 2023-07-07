@@ -21,6 +21,7 @@ wxIMPLEMENT_APP(Downloader);
 class MyFrame : public wxFrame, public wxThreadHelper
 {
 public:
+    MyFrame();
     static MyFrame* GetInstance();  // Singleton accessor
     ~MyFrame();
 
@@ -57,6 +58,8 @@ bool Downloader::OnInit()
 MyFrame::MyFrame()
     : wxFrame(nullptr, wxID_ANY, "Parrotias setup", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
 {
+    instance = this; // Set the instance pointer
+
     // Set up the gauge
     progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxSize(400, 10), wxGA_HORIZONTAL);
 
@@ -87,7 +90,7 @@ MyFrame::MyFrame()
 
 MyFrame::~MyFrame()
 {
-     if (GetThread() && GetThread()->IsRunning())
+    if (GetThread() && GetThread()->IsRunning())
         GetThread()->Wait();
 }
 
@@ -118,7 +121,7 @@ wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
         // Failed to load image data
         wxMessageBox("Failed to load image", "Error", wxOK | wxICON_ERROR);
     }
-    
+
     // Create title message
     wxStaticText* titleMessage = new wxStaticText(this, wxID_ANY, "Parrotias");
     wxFont font(wxFontInfo(14).Bold());
@@ -142,7 +145,7 @@ wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
     // Set the main sizer as the sizer for the frame
     SetSizer(mainSizer);
 
-    return mainSizer; 
+    return mainSizer;
 }
 
 wxThread::ExitCode MyFrame::Entry()
@@ -249,8 +252,15 @@ void MyFrame::DownloadAndUnzipFile()
 {
     DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias-windows-release.zip");
 
+    wxSafeYield(); // Yield to allow the GUI to update
+
     //TODO: Unzip downloaded file
-    
+
     //TODO: Delete downloaded file
 }
+
+
+
+
+
 
