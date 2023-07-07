@@ -24,7 +24,7 @@ public:
     static MyFrame* GetInstance();  // Singleton accessor
     ~MyFrame();
 
-    static const int ID_DOWNLOAD_PROGRESS = wxID_HIGHEST + 1; // 1. Add event declaration 
+    static const int ID_DOWNLOAD_PROGRESS = wxID_HIGHEST + 1; // Add event declaration 
 
 private:
     static MyFrame* instance;  // Singleton instance
@@ -33,9 +33,8 @@ private:
 
     wxGauge* progressBar;
 
-    void onThreadUpdate(wxThreadEvent& event);
     wxThread::ExitCode Entry() override;
-    void OnDownloadProgress(wxThreadEvent& event); // 1. Add event handler declaration 
+    void OnDownloadProgress(wxThreadEvent& event); // Add event handler declaration 
 
     wxBoxSizer* CreateMainSizer(wxGauge* progressBar);
 };
@@ -88,7 +87,7 @@ MyFrame::MyFrame()
 
 MyFrame::~MyFrame()
 {
-    if (GetThread() && GetThread()->IsRunning())
+     if (GetThread() && GetThread()->IsRunning())
         GetThread()->Wait();
 }
 
@@ -143,8 +142,6 @@ wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
     // Set the main sizer as the sizer for the frame
     SetSizer(mainSizer);
 
-    //DownloadAndUnzipFile();
-
     return mainSizer; 
 }
 
@@ -157,14 +154,9 @@ wxThread::ExitCode MyFrame::Entry()
 }
 
 // Event handler to update progress bar
-void MyFrame::OnDownloadProgress(wxThreadEvent& event) // 4. Implement event handler
+void MyFrame::OnDownloadProgress(wxThreadEvent& event) // Implement event handler
 {
     progressBar->SetValue(event.GetInt());
-}
-
-void MyFrame::onThreadUpdate(wxThreadEvent& event)
-{
-
 }
 
 // Function to write downloaded data to a file
@@ -176,7 +168,7 @@ size_t WriteData(void* ptr, size_t size, size_t nmemb, FILE* stream)
 // Callback function to update prgoressbar
 int ProgressCallback(void* ptr, double TotalToDownload, double NowDownloaded, double TotalToUpload, double NowUploaded)
 {
-    MyFrame* frame = static_cast<MyFrame*>(ptr); // 2. Update ProgressCallback
+    MyFrame* frame = static_cast<MyFrame*>(ptr); // Update ProgressCallback
     int progress = static_cast<int>(NowDownloaded / TotalToDownload * 100);
 
     wxThreadEvent* evt = new wxThreadEvent(wxEVT_THREAD, MyFrame::ID_DOWNLOAD_PROGRESS);
@@ -258,7 +250,7 @@ void MyFrame::DownloadAndUnzipFile()
     DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias-windows-release.zip");
 
     //TODO: Unzip downloaded file
-
+    
     //TODO: Delete downloaded file
 }
 

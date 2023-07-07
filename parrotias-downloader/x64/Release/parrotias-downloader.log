@@ -1,2 +1,2 @@
 ﻿  parrotias-downloader.cpp
-C:\Users\katal\source\repos\parrotias-downloader\parrotias-downloader\parrotias-downloader.cpp(59,5): error C2600: 'MyFrame::MyFrame': cannot define a compiler-generated special member function (must be declared in the class first)
+C:\Users\katal\source\repos\parrotias-downloader\parrotias-downloader\parrotias-downloader.cpp(58,5): error C2600: 'MyFrame::MyFrame': cannot define a compiler-generated special member function (must be declared in the class first)
