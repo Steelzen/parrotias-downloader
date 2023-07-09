@@ -31,6 +31,7 @@ private:
     static MyFrame* instance;  // Singleton instance
 
     void DownloadAndUnzipFile();
+    void OnExit(wxCommandEvent& event);
 
     wxGauge* progressBar;
 
@@ -59,6 +60,8 @@ MyFrame::MyFrame()
     : wxFrame(nullptr, wxID_ANY, "Parrotias setup", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
 {
     instance = this; // Set the instance pointer
+
+    Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
 
     // Set up the gauge
     progressBar = new wxGauge(this, wxID_ANY, 100, wxDefaultPosition, wxSize(400, 10), wxGA_HORIZONTAL);
@@ -94,6 +97,10 @@ MyFrame::~MyFrame()
         GetThread()->Wait();
 }
 
+void MyFrame::OnExit(wxCommandEvent& event)
+{
+    Close(true);
+}
 
 wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
 {
@@ -103,17 +110,15 @@ wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
     // Create sub sizer to contain messages and progress bar
     wxBoxSizer* rightSizer = new wxBoxSizer(wxVERTICAL);
 
-    // Load the image data using stb_image
+    //Load the image data using stb_image
     int width, height, channels;
-    unsigned char* image_data = stbi_load_from_memory(logo_data, logo_data_size, &width, &height, &channels, 0);
-
+    unsigned char* image_data = stbi_load_from_memory(logo_data, logo_data_size, &width, &height, &channels, 3);
     if (image_data)
     {
         wxImage image(width, height, image_data, true);
         wxBitmap logoBitmap(image);
         wxStaticBitmap* logo = new wxStaticBitmap(this, wxID_ANY, logoBitmap);
-        mainSizer->Add(logo, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
-
+        mainSizer->Add(logo, 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
         stbi_image_free(image_data);
     }
     else
@@ -257,6 +262,9 @@ void MyFrame::DownloadAndUnzipFile()
     //TODO: Unzip downloaded file
 
     //TODO: Delete downloaded file
+
+    wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, wxID_EXIT);
+    wxPostEvent(this, event);
 }
 
 
