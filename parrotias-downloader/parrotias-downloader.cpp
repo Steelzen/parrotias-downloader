@@ -9,6 +9,7 @@
 #include "logo_data.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+#include "wx/mstream.h"
 
 class Downloader : public wxApp
 {
@@ -51,15 +52,33 @@ MyFrame* MyFrame::GetInstance()
 
 bool Downloader::OnInit()
 {
+    ::wxInitAllImageHandlers();
     MyFrame* frame = new MyFrame();
     frame->Show(true);
     return true;
 }
 
 MyFrame::MyFrame()
-    : wxFrame(nullptr, wxID_ANY, "Parrotias setup", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
+    : wxFrame(nullptr, wxID_ANY, "", wxDefaultPosition, wxSize(1000, 300), wxDEFAULT_FRAME_STYLE)
 {
+
     instance = this; // Set the instance pointer
+
+    //wxIcon icon("IDI_ICON1");
+    //SetIcon(icon);
+    //SetIcon(wxICON(IDI_ICON1));
+
+    //wxIcon icon;
+    //icon.LoadFile("icon.ico", wxBITMAP_TYPE_ICO);
+    //this->SetIcon(icon);
+
+    //SetIcon(wxICON(IDI_ICON1));
+
+    wxMemoryInputStream stream(icon_png, icon_png_size);
+    wxImage image(stream, wxBITMAP_TYPE_PNG);
+    wxIcon icon;
+    icon.CopyFromBitmap(wxBitmap(image));
+    this->SetIcon(icon);
 
     Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
 
@@ -255,7 +274,7 @@ void DownloadToUserFolder(const char* url, const char* filename) {
 // Download and unzip usage
 void MyFrame::DownloadAndUnzipFile()
 {
-    DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias-windows-release.zip");
+    DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias.zip");
 
     wxSafeYield(); // Yield to allow the GUI to update
 
