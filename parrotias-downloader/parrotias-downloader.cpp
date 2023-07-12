@@ -10,6 +10,12 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #include "wx/mstream.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cstdio>
+#include "minizip/zip.h"
+#include "minizip/unzip.h"
 
 class Downloader : public wxApp
 {
@@ -31,7 +37,7 @@ public:
 private:
     static MyFrame* instance;  // Singleton instance
 
-    void DownloadAndUnzipFile();
+    void InstallTheFile();
     void OnExit(wxCommandEvent& event);
 
     wxGauge* progressBar;
@@ -64,15 +70,8 @@ MyFrame::MyFrame()
 
     instance = this; // Set the instance pointer
 
-    //wxIcon icon("IDI_ICON1");
-    //SetIcon(icon);
     //SetIcon(wxICON(IDI_ICON1));
 
-    //wxIcon icon;
-    //icon.LoadFile("icon.ico", wxBITMAP_TYPE_ICO);
-    //this->SetIcon(icon);
-
-    //SetIcon(wxICON(IDI_ICON1));
 
     wxMemoryInputStream stream(icon_png, icon_png_size);
     wxImage image(stream, wxBITMAP_TYPE_PNG);
@@ -175,7 +174,7 @@ wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
 wxThread::ExitCode MyFrame::Entry()
 {
     // Do Download
-    DownloadAndUnzipFile();
+    InstallTheFile();
 
     return (wxThread::ExitCode)0;
 }
@@ -184,6 +183,51 @@ wxThread::ExitCode MyFrame::Entry()
 void MyFrame::OnDownloadProgress(wxThreadEvent& event) // Implement event handler
 {
     progressBar->SetValue(event.GetInt());
+}
+
+// Function to unzip file
+void UnzipFile(const std::string& zipPath, const std::string& destination) {
+    unzFile zipFile = unzOpen(zipPath.c_str());
+    if (zipFile) {
+        unz_global_info globalInfo;
+        if (unzGetGlobalInfo(zipFile, &globalInfo) == UNZ_OK) {
+            for (uLong i = 0; i < globalInfo.number_entry; ++i) {
+                unz_file_info fileInfo;
+                char fileName[256];
+                if (unzGetCurrentFileInfo(zipFile, &fileInfo, fileName, sizeof(fileName), nullptr, 0, nullptr, 0) == UNZ_OK) {
+                    std::string filePath = destination + fileName;
+
+                    if (fileName[strlen(fileName) - 1] == '/')
+                    {
+                        std::string directory = destination + fileName;
+                        CreateDirectoryA(directory.c_str(), nullptr);
+                    }
+                    else
+                    {
+                        if (unzOpenCurrentFile(zipFile) == UNZ_OK) {
+                            std::ofstream file(filePath, std::ios::binary);
+                            if (file) {
+                                char buffer[8192];
+                                int readBytes;
+                                while ((readBytes = unzReadCurrentFile(zipFile, buffer, sizeof(buffer))) > 0) {
+                                    file.write(buffer, readBytes);
+                                }
+                                file.close();
+                            }
+                            unzCloseCurrentFile(zipFile);
+                        }
+                    }
+                }
+
+                unzGoToNextFile(zipFile);
+            }
+        }
+
+        unzClose(zipFile);
+    }
+    else {
+        wxMessageBox("Failed to open zip file", "Error", wxOK | wxICON_ERROR);
+    }
 }
 
 // Function to write downloaded data to a file
@@ -259,28 +303,36 @@ bool DownloadFile(const char* url, const char* destination)
     return false;
 }
 
-// Find Users folder in computer and download the file
-void DownloadToUserFolder(const char* url, const char* filename) {
+// Find Users folder in computer and download the file into /Downlaods
+void DownloadAndUnzip(const char* url, const char* filename) {
     char path[MAX_PATH];
     if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_PROFILE, NULL, 0, path))) {
-        std::string destination = std::string(path) + "\\" + std::string(filename);
+        std::string destination = std::string(path) + "\\Downloads\\" + std::string(filename);
         DownloadFile(url, destination.c_str());
+
+        // Unzip downloaded file
+        std::string unzipDestination = "C:\\Program Files\\Parrotias\\";
+        //std::string unzipDestination = "C:\\Users\\Public\\";
+        UnzipFile(destination, unzipDestination);
+
+        // Delete downloaded.file
+        std::remove(destination.c_str());
     }
     else {
         wxMessageBox("Failed to get user directory", "Error", wxOK | wxICON_ERROR);
     }
 }
 
+
 // Download and unzip usage
-void MyFrame::DownloadAndUnzipFile()
+void MyFrame::InstallTheFile() 
 {
-    DownloadToUserFolder("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias.zip");
+    // TODO: Prompt Run as Administrator
+
+    DownloadAndUnzip("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias.zip");
 
     wxSafeYield(); // Yield to allow the GUI to update
 
-    //TODO: Unzip downloaded file
-
-    //TODO: Delete downloaded file
 
     wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, wxID_EXIT);
     wxPostEvent(this, event);

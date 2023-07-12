@@ -1,6 +1,6 @@
 ﻿  parrotias-downloader.cpp
   Generating code
   Previous IPDB not found, fall back to full compilation.
-  All 787 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 1046 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   parrotias-downloader.vcxproj -> C:\Users\katal\source\repos\parrotias-downloader\x64\Release\parrotias-downloader.exe
