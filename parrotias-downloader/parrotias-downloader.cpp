@@ -58,6 +58,7 @@ MyFrame* MyFrame::GetInstance()
 
 bool Downloader::OnInit()
 {
+
     ::wxInitAllImageHandlers();
     MyFrame* frame = new MyFrame();
     frame->Show(true);
@@ -72,7 +73,7 @@ MyFrame::MyFrame()
 
     //SetIcon(wxICON(IDI_ICON1));
 
-
+    // Input Favicon to title bar
     wxMemoryInputStream stream(icon_png, icon_png_size);
     wxImage image(stream, wxBITMAP_TYPE_PNG);
     wxIcon icon;
@@ -207,20 +208,35 @@ void UnzipFile(const std::string& zipPath, const std::string& destination) {
                         if (unzOpenCurrentFile(zipFile) == UNZ_OK) {
                             std::ofstream file(filePath, std::ios::binary);
                             if (file) {
-                                char buffer[8192];
+                                char buffer[32768];
                                 int readBytes;
                                 while ((readBytes = unzReadCurrentFile(zipFile, buffer, sizeof(buffer))) > 0) {
                                     file.write(buffer, readBytes);
                                 }
                                 file.close();
                             }
+                            else {
+                                wxMessageBox(wxString::Format("Failed to find file: %s", filePath), "Error", wxOK | wxICON_ERROR);
+                            }
+
                             unzCloseCurrentFile(zipFile);
+                        }
+                        else {
+                            wxMessageBox("Failed to unzip opened current file", "Error", wxOK | wxICON_ERROR);
                         }
                     }
                 }
 
+                else {
+                    wxMessageBox("Failed to get current file info", "Error", wxOK | wxICON_ERROR);
+                }
+
                 unzGoToNextFile(zipFile);
             }
+        }
+
+        else {
+            wxMessageBox("Failed get global info of zip file", "Error", wxOK | wxICON_ERROR);
         }
 
         unzClose(zipFile);
@@ -310,11 +326,13 @@ void DownloadAndUnzip(const char* url, const char* filename) {
         std::string destination = std::string(path) + "\\Downloads\\" + std::string(filename);
         DownloadFile(url, destination.c_str());
 
-        // Unzip downloaded file
+        // create directory of destination
         std::string unzipDestination = "C:\\Program Files\\Parrotias\\";
-        //std::string unzipDestination = "C:\\Users\\Public\\";
-        UnzipFile(destination, unzipDestination);
+        CreateDirectoryA(unzipDestination.c_str(), nullptr);
 
+        // Unzip downloaded file
+        UnzipFile(destination, unzipDestination);
+         
         // Delete downloaded.file
         std::remove(destination.c_str());
     }
@@ -323,16 +341,12 @@ void DownloadAndUnzip(const char* url, const char* filename) {
     }
 }
 
-
 // Download and unzip usage
 void MyFrame::InstallTheFile() 
 {
-    // TODO: Prompt Run as Administrator
-
-    DownloadAndUnzip("https://github.com/Steelzen/parrotias-windows/archive/refs/tags/release.zip", "parrotias.zip");
+    DownloadAndUnzip("https://storage.googleapis.com/examples-344501.appspot.com/Parrotias.zip", "parrotias.zip");
 
     wxSafeYield(); // Yield to allow the GUI to update
-
 
     wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, wxID_EXIT);
     wxPostEvent(this, event);
