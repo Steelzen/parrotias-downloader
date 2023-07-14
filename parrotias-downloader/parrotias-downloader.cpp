@@ -155,7 +155,7 @@ wxBoxSizer* MyFrame::CreateMainSizer(wxGauge* progressBar)
     rightSizer->Add(titleMessage, 0, wxALL | wxALIGN_LEFT, 10);
 
     // Under message
-    wxStaticText* customMessage = new wxStaticText(this, wxID_ANY, "Can't wait you will use it!", wxDefaultPosition, wxSize(400, 100), wxGA_HORIZONTAL);
+    wxStaticText* customMessage = new wxStaticText(this, wxID_ANY, "Discover the power of Parrotias: An immersive Windows application.", wxDefaultPosition, wxSize(400, 100), wxGA_HORIZONTAL);
     rightSizer->Add(customMessage, 0, wxALL | wxALIGN_LEFT, 10);
 
     // Set the progress bar
