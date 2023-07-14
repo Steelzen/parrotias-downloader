@@ -2,6 +2,7 @@
 #include <wx/filename.h>
 #include <windows.h>
 #include <shlobj.h>
+#include <shobjidl.h> 
 #include <curl/curl.h>
 #include <zip.h>
 #include <wx/stdpaths.h>
@@ -14,6 +15,7 @@
 #include <string>
 #include <fstream>
 #include <cstdio>
+#include <objbase.h>
 #include "minizip/zip.h"
 #include "minizip/unzip.h"
 
@@ -246,6 +248,57 @@ void UnzipFile(const std::string& zipPath, const std::string& destination) {
     }
 }
 
+// Function to create desktop shortcut
+HRESULT CreateDesktopShortcut(const char* target, const char* shortcutPath, const char* description)
+{
+    CoInitialize(NULL);
+
+    // Get a pointer to the IShellLink interface
+    IShellLink* pShellLink;
+    HRESULT hr = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, (void**)&pShellLink);
+
+    if (SUCCEEDED(hr))
+    {
+        // Convert the target and description strings to wide strings
+        WCHAR wideTarget[MAX_PATH];
+        WCHAR wideDescription[MAX_PATH];
+        MultiByteToWideChar(CP_ACP, 0, target, -1, wideTarget, MAX_PATH);
+        MultiByteToWideChar(CP_ACP, 0, description, -1, wideDescription, MAX_PATH);
+
+        // Set the path to the shortcut target and the description of the shortcut
+        pShellLink->SetPath(wideTarget);
+        pShellLink->SetDescription(wideDescription);
+
+        // Query IShellLink for the IPersistFile interface
+        IPersistFile* pPersistFile;
+        hr = pShellLink->QueryInterface(IID_IPersistFile, (void**)&pPersistFile);
+
+        if (SUCCEEDED(hr))
+        {
+            // Convert the shortcutPath string to wide string
+            wchar_t widePath[MAX_PATH];
+            MultiByteToWideChar(CP_ACP, 0, shortcutPath, -1, widePath, MAX_PATH);
+
+            // Save the shortcut to the file
+            hr = pPersistFile->Save(widePath, TRUE);
+
+            // Release the IPersistFile interface
+            pPersistFile->Release();
+        }
+
+        // Release the IShellLink interface
+        pShellLink->Release();
+    }
+
+    CoUninitialize();
+    return hr;
+}
+
+// Function to Execute the program 
+void RunExe(const char* path) {
+    ShellExecuteA(NULL, "open", path, NULL, NULL, SW_SHOWNORMAL);
+}
+
 // Function to write downloaded data to a file
 size_t WriteData(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
@@ -341,13 +394,35 @@ void DownloadAndUnzip(const char* url, const char* filename) {
     }
 }
 
+void CreateDesktopShortcutFromParrotias() {
+    char desktopPath[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_DESKTOP, NULL, 0, desktopPath)))
+    {
+        std::string shortcutPath = std::string(desktopPath) + "\\Parrotias.lnk";
+        std::string targetPath = "C:\\Program Files\\Parrotias\\parrotias.exe";
+        CreateDesktopShortcut(targetPath.c_str(), shortcutPath.c_str(), "Parrotias Shortcut");
+    }
+    else
+    {
+        wxMessageBox("Failed to get desktop directory", "Error", wxOK | wxICON_ERROR);
+    }
+}
+
 // Download and unzip usage
 void MyFrame::InstallTheFile() 
 {
     DownloadAndUnzip("https://storage.googleapis.com/examples-344501.appspot.com/Parrotias.zip", "parrotias.zip");
 
+    // Make shortcut for exe file
+    CreateDesktopShortcutFromParrotias();
+
+    // Execute exe file
+    std::string targetPath = "C:\\Program Files\\Parrotias\\parrotias.exe";
+    RunExe(targetPath.c_str());
+
     wxSafeYield(); // Yield to allow the GUI to update
 
+    // Close the app
     wxCommandEvent event(wxEVT_COMMAND_MENU_SELECTED, wxID_EXIT);
     wxPostEvent(this, event);
 }
